@@ -1,113 +1,204 @@
 import 'package:flutter/material.dart';
-import 'loading_screen.dart';
 
-class TextAnalysisScreen extends StatelessWidget {
+class MyPageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFAFAFA),
       appBar: AppBar(
+        title: Text('마이페이지'),
         backgroundColor: Colors.white,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          "텍스트로 분석하기",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-        iconTheme: IconThemeData(color: Colors.black),
+        foregroundColor: Colors.black,
+        elevation: 1,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.notifications_none),
+            onPressed: () {},
+            color: Colors.black54,
+          ),
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {},
+            color: Colors.black54,
+          ),
+        ],
       ),
-      body: SingleChildScrollView( // 스크롤 가능하도록 감싸기
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 제목
-              Text(
-                "텍스트로 분석하기",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green,
-                ),
-              ),
-              SizedBox(height: 8),
-              Text(
-                "현재 회원님 몸의 질병이나 증상 등을 작성해주세요",
-                style: TextStyle(fontSize: 14, color: Colors.black54),
-              ),
-              SizedBox(height: 24),
-
-              // 질병 작성하기
-              Text(
-                "질병 작성하기",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 8),
-              TextField(
-                maxLines: 4,
-                decoration: InputDecoration(
-                  hintText: "질병에 대해 작성해주세요",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.green),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-              ),
-              SizedBox(height: 24),
-
-              // 증상 작성하기
-              Text(
-                "증상 작성하기",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 8),
-              TextField(
-                maxLines: 4,
-                decoration: InputDecoration(
-                  hintText: "증상에 대해 작성해주세요",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.green),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-              ),
-              SizedBox(height: 24),
-
-              // 분석하기 버튼
-              Align(
-                alignment: Alignment.centerRight, // 오른쪽 정렬
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoadingScreen()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+              // 사용자 정보 카드
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 10,
+                      spreadRadius: 2,
                     ),
-                  ),
-                  child: Text(
-                    "분석하기",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
+                  ],
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start, // 위쪽 정렬
+                  children: [
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.grey[200],
+                      child: Icon(Icons.person, color: Colors.grey, size: 40),
+                    ),
+                    SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "홍길동",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green,
+                                ),
+                              ),
+                              Text(
+                                "님 안녕하세요!",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 4),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "내 정보 관리하기 >",
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 16), // 버튼 아래 공간 추가
+              SizedBox(height: 20),
+
+              // 주문/배송, 포인트, 쿠폰, 리뷰
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                    ),
+                  ],
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buildInfoItem("주문 / 배송", "0"),
+                    _buildDivider(),
+                    _buildInfoItem("포인트", "0P"),
+                    _buildDivider(),
+                    _buildInfoItem("쿠폰", "0"),
+                    _buildDivider(),
+                    _buildInfoItem("리뷰", "0"),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+
+              // 나의 레시피 섹션
+              _buildSectionTitle("나의 레시피"),
+              _buildListItem("나에게 필요한 영양소"),
+              _buildListItem("내 맞춤형 레시피 / 식단"),
+              _buildListItem("찜 목록"),
+              SizedBox(height: 20),
+
+              // 쇼핑 섹션
+              _buildSectionTitle("쇼핑"),
+              _buildListItem("주문 내역 / 배송 조회"),
+              _buildListItem("교환 / 반품 / 취소 내역"),
+              _buildListItem("리뷰 목록 관리"),
+              SizedBox(height: 20),
+
+              // 고객 센터 섹션
+              _buildSectionTitle("고객 센터"),
+              _buildListItem("공지사항"),
+              _buildListItem("이벤트"),
+              _buildListItem("FAQ"),
+              _buildListItem("1 : 1 문의"),
+              _buildListItem("설정"),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  // 개별 정보 아이템
+  Widget _buildInfoItem(String title, String value) {
+    return Column(
+      children: [
+        Text(
+          value,
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(height: 4),
+        Text(
+          title,
+          style: TextStyle(fontSize: 12, color: Colors.black54),
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
+  }
+
+  // 구분선
+  Widget _buildDivider() {
+    return Container(
+      height: 40,
+      width: 1,
+      color: Colors.grey[300],
+    );
+  }
+
+  // 섹션 제목
+  Widget _buildSectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Text(
+        title,
+        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black87),
+      ),
+    );
+  }
+
+  // 리스트 아이템
+  Widget _buildListItem(String title) {
+    return Column(
+      children: [
+        ListTile(
+          contentPadding: EdgeInsets.symmetric(horizontal: 0),
+          title: Text(
+            title,
+            style: TextStyle(fontSize: 14),
+          ),
+          trailing: Icon(Icons.arrow_forward_ios, size: 16),
+        ),
+        Divider(height: 1, thickness: 1, color: Colors.grey[200]),
+      ],
     );
   }
 }

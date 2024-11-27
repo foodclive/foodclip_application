@@ -14,9 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Nutrition App',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.green, // 기본 색상
       ),
-      home: MainNavigation(),
+      home: MainNavigation(), // MainNavigation이 앱의 홈
     );
   }
 }
@@ -27,8 +27,9 @@ class MainNavigation extends StatefulWidget {
 }
 
 class _MainNavigationState extends State<MainNavigation> {
-  int _currentIndex = 0;
+  int _currentIndex = 0; // 현재 네비게이션바 선택 인덱스
 
+  // 네비게이션바와 연결된 페이지 목록
   final List<Widget> _screens = [
     HomeScreen(),
     ProductPage(),
@@ -39,23 +40,35 @@ class _MainNavigationState extends State<MainNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true, // 키보드 팝업 시 화면 레이아웃 조정
-      body: _screens[_currentIndex],
+      resizeToAvoidBottomInset: true, // 키보드 팝업 시 레이아웃 조정
+      body: _screens[_currentIndex], // 현재 선택된 페이지
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
-            _currentIndex = index;
+            _currentIndex = index; // 선택된 인덱스로 변경
           });
         },
         selectedItemColor: Color(0xFF575656), // 선택된 아이템 색상
-        unselectedItemColor: Colors.black38, // 선택되지 않은 아이템 색상
-        type: BottomNavigationBarType.fixed,
+        unselectedItemColor: Colors.black38, // 비활성화 아이템 색상
+        type: BottomNavigationBarType.fixed, // 네비게이션바 타입
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag), label: '상품'),
-          BottomNavigationBarItem(icon: Icon(Icons.text_snippet), label: '분석'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: '마이페이지'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '홈',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag),
+            label: '상품',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.text_snippet),
+            label: '분석',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: '마이페이지',
+          ),
         ],
       ),
     );

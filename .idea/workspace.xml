@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e5784d5-905a-4f03-8c84-a4503a9317a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/application/lib/screens/loading_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/lib/screens/text_analysis_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/application/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/lib/screens/my_page_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/application/lib/screens/my_page_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/lib/screens/product_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/application/lib/screens/product_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/lib/screens/text_analysis_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/application/lib/screens/text_analysis_screen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +41,7 @@
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/git_box/Ada_3team-Application",
+    "last_opened_file_path": "D:/git_box/foodclip_application",
     "settings.editor.selected.configurable": "dart.settings"
   }
 }]]></component>
